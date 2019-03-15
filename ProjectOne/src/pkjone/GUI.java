@@ -307,16 +307,11 @@ public class GUI extends Application {
 			if (account.getCount() <= 0)
 				beginNext.setText("No next Transactions have been made");
 			else {
-			/*	if (account.getCountHistory() > 4)
-					nextt.setText("No other transacions ");
-				else {*/
 					beginNext.setText("");
-					//account.setCount((account.getCount() + 1));
 					String nextstring = account.next();
 					account.setCount((account.getCount() + 1));
 					nexthistory.setText("The next transicion is ");
 					nextt.setText(nextstring);
-				//}
 			}
 		});
 		thennn.setOnAction(e -> {
