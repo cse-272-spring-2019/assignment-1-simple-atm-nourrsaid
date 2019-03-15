@@ -188,8 +188,10 @@ public class GUI extends Application {
 			
 
 			if (account.deposit(Double.parseDouble(amount.getText())) == false)
-				validateAmount.setText("you have to enter a positive amount");
+			{	text.setText("");
+				validateAmount.setText("you have to enter a positive amount");}
 			else {
+				text.setText("");
 				validateAmount.setText("Done");
 				primaryStage.setScene(sceneChoice);
 
@@ -218,7 +220,9 @@ public class GUI extends Application {
 			if (account.withDraw(Double.parseDouble(amountt.getText())) == false) {
 				validateWithdrawAmount.setText("your balance is not enough");
 				textt.setText("");
+				
 			} else {
+				textt.setText("");
 				validateWithdrawAmount.setText("Done");
 				primaryStage.setScene(sceneChoice);
 			}}
@@ -300,18 +304,19 @@ public class GUI extends Application {
 
 		next.setOnAction(e -> {
 			primaryStage.setScene(sceneNext);
-			if (account.getCount() < 1)
+			if (account.getCount() <= 0)
 				beginNext.setText("No next Transactions have been made");
 			else {
-				if (account.getCountHistory() > 4)
+			/*	if (account.getCountHistory() > 4)
 					nextt.setText("No other transacions ");
-				else {
+				else {*/
 					beginNext.setText("");
-					account.setCount((account.getCount() + 1));
+					//account.setCount((account.getCount() + 1));
 					String nextstring = account.next();
+					account.setCount((account.getCount() + 1));
 					nexthistory.setText("The next transicion is ");
 					nextt.setText(nextstring);
-				}
+				//}
 			}
 		});
 		thennn.setOnAction(e -> {
